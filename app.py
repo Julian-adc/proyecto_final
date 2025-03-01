@@ -37,10 +37,12 @@ with center_col:
     st.write("""
 INTRODUCCIÓN:
         El impacto ambiental de los sectores industriales representa un desafío clave en la transición hacia un modelo económico sostenible. Este informe identifica los sectores con mayor contribución a las emisiones de CO₂ a nivel mundial, con el fin de establecer un marco comparativo para el caso de Colombia. Además, se evalúan estrategias para reducir estas emisiones sin comprometer el crecimiento económico del país.
-        A través del análisis de datos sectoriales y políticas ambientales, se busca proponer soluciones que equilibren la competitividad industrial con el cumplimiento de los compromisos climáticos nacionales. Asimismo, se analiza cómo una mayor adopción de concretos, incluyendo la apertura a nuevos mercados que exigen el cumplimiento de normativas ambientales.
-
+        A través del análisis de datos sectoriales y políticas ambientales, se busca proponer soluciones que equilibren la competitividad industrial con el cumplimiento de los compromisos climáticos nacionales. Asimismo, se analiza cómo una mayor adopción de concretos, incluyendo la apertura a nuevos mercados que exigen el cumplimiento de normativas ambientales.""")
+    st.write("""
 OBJETIVO: 
         Identificar los sectores industriales con mayor impacto ambiental en términos de emisiones de CO₂ y evaluar estrategias que permitan la reducción de emisiones sin comprometer el crecimiento económico del país.
+             """)
+    st.write("""
     3. ALCANCE DEL PROYECTO
 Alcances
     •	Recopilación y análisis de datos sobre emisiones de CO₂ y Producto Interno Bruto (PIB) a nivel mundial y regional.
@@ -137,4 +139,11 @@ RESULTADOS ESPERADOS
     2.	Visualización efectiva: Creación de al menos 5 gráficos clave que representen las tendencias más relevantes.
     3.	Calidad del informe final: Documento estructurado con análisis fundamentado, revisado y validado según estándares académicos o empresariales.
     4.	Relevancia de las recomendaciones: Propuestas alineadas con tendencias globales en políticas ambientales y aplicables al contexto colombiano.
-    5.	Cumplimiento del cronograma: Finalización de cada fase dentro de las 4 semanas establecidas.""")
+    5.	Cumplimiento del cronograma: Finalización de cada fase dentro de las 4 semanas establecidas.
+             
+CONCLUSION       
+    El informe evidencia la relación entre el crecimiento económico y las emisiones de CO₂, aunque factores como la eficiencia energética 
+    y las políticas ambientales pueden mitigarla. El sector petrolero sigue siendo el mayor emisor, aunque su crecimiento se ha estabilizado,
+    mientras que el carbón y otras industrias mantienen una tendencia al alza. A nivel regional, Brasil y México lideran las emisiones en América Latina,
+    mientras que Argentina y Colombia muestran un crecimiento más moderado. Se requieren regulaciones más estrictas, impulso a energías renovables y
+     diversificación energética para reducir emisiones sin afectar el desarrollo económico.""")

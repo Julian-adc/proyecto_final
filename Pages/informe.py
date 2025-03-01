@@ -16,7 +16,7 @@ st.set_page_config(
 
 #Visualización
 st.title("Evolución Global del CO₂ y el PIB (2000-2023): Análisis y Relevancia para las Políticas Públicas en Colombia")
-ruta = "Data/tabla.csv"
+ruta = "data/tabla.csv"
 df = pd.read_csv(ruta)
 tex = "Este estudio presenta un análisis de los datos relevantes sobre la generación de CO₂ y el PIB a nivel mundial desde el año 2000 hasta 2023. Se examina la correlación y variabilidad de estos indicadores en el contexto de su evolución global. El objetivo es comprender estos cambios para orientar el diseño y evaluación de políticas públicas en Colombia, con un enfoque en los distintos sectores industriales."
 st.write(df, tex)
@@ -154,47 +154,61 @@ else:
         "y cómo esto impacta en sus emisiones per cápita.")
 
     # Filtrar los 10 países con mayor PIB
-df_gdp_top10 = df.groupby("country", as_index=False).agg({
+    df_gdp_top10 = df.groupby("country", as_index=False).agg({
     "gdp": "max",  # Seleccionar el mayor PIB registrado por país
     "coal_co2_per_capita": "mean",  # Promedio de emisiones por carbón
     "oil_co2_per_capita": "mean",  # Promedio de emisiones por petróleo
     "gas_co2_per_capita": "mean"  # Promedio de emisiones por gas
-}).nlargest(10, "gdp")  # Seleccionar los 10 países con mayor PIB
+    }).nlargest(10, "gdp")  # Seleccionar los 10 países con mayor PIB
 
-# Definir ancho de las barras
-w = 0.25  
+    # Definir ancho de las barras
+    w = 0.25  
 
-# Convertir datos a numpy arrays
-x = np.asarray(df_gdp_top10["country"])  # Usar nombres de países
-y_carbon = np.asarray(df_gdp_top10["coal_co2_per_capita"])
-y_petroleo = np.asarray(df_gdp_top10["oil_co2_per_capita"])
-y_gas = np.asarray(df_gdp_top10["gas_co2_per_capita"])
+    # Convertir datos a numpy arrays
+    x = np.asarray(df_gdp_top10["country"])  # Usar nombres de países
+    y_carbon = np.asarray(df_gdp_top10["coal_co2_per_capita"])
+    y_petroleo = np.asarray(df_gdp_top10["oil_co2_per_capita"])
+    y_gas = np.asarray(df_gdp_top10["gas_co2_per_capita"])
 
-# Definir posiciones de las barras
-bar1 = np.arange(len(x))  
-bar2 = bar1 + w  
-bar3 = bar2 + w  
+    # Definir posiciones de las barras
+    bar1 = np.arange(len(x))  
+    bar2 = bar1 + w  
+    bar3 = bar2 + w  
 
-# Crear la figura y los ejes
-fig, ax = plt.subplots(figsize=(12, 6))
+    # Crear la figura y los ejes
+    fig, ax = plt.subplots(figsize=(12, 6))
 
-# Graficar las barras correctamente alineadas
-ax.bar(bar1, y_carbon, w, label="Carbón", color="red")
-ax.bar(bar2, y_petroleo, w, label="Petróleo", color="blue")
-ax.bar(bar3, y_gas, w, label="Gas", color="green")
+    # Graficar las barras correctamente alineadas
+    ax.bar(bar1, y_carbon, w, label="Carbón", color="red")
+    ax.bar(bar2, y_petroleo, w, label="Petróleo", color="blue")
+    ax.bar(bar3, y_gas, w, label="Gas", color="green")
 
-# Personalizar la gráfica
-ax.set_xlabel("PAÍSES")
-ax.set_ylabel("CO2 PER CÁPITA")
-ax.set_title("RELACIÓN ENTRE PIB Y EMISIONES DE CO2 PER CÁPITA")
+    # Personalizar la gráfica
+    ax.set_xlabel("PAÍSES")
+    ax.set_ylabel("CO2 PER CÁPITA")
+    ax.set_title("RELACIÓN ENTRE PIB Y EMISIONES DE CO2 PER CÁPITA")
 
-# Ajustar etiquetas del eje X
-ax.set_xticks(bar1 + w)  
-ax.set_xticklabels(x, rotation=45)  
+    # Ajustar etiquetas del eje X
+    ax.set_xticks(bar1 + w)  
+    ax.set_xticklabels(x, rotation=45)  
 
-# Agregar leyenda y cuadrícula
-ax.legend()
-ax.grid(axis="y", linestyle="--", alpha=0.5)
+    # Agregar leyenda y cuadrícula
+    ax.legend()
+    ax.grid(axis="y", linestyle="--", alpha=0.5)
 
-# Mostrar la figura
-st.pyplot(fig)    
+    # Mostrar la figura
+    st.pyplot(fig)    
+
+    st.write(""" 
+Consideraciones principales:
+             
+1. Crecimiento económico y CO₂: A mayor PIB, más emisiones, aunque la eficiencia energética y políticas ambientales pueden mitigarlas.
+
+
+2. Sectores emisores: El petróleo sigue siendo el mayor emisor, pero estable; el carbón y otras industrias siguen en aumento, elevando la temperatura global.
+
+
+3. América Latina: Brasil y México lideran en emisiones; regulaciones han frenado su crecimiento, pero se necesita más transición hacia renovables y diversificación energética.
+
+
+4. Conclusión: Reducir emisiones sin frenar el crecimiento exige políticas sostenibles, inversión en tecnología limpia y regulaciones que fomenten energías renovables.""")
